@@ -1,0 +1,43 @@
+﻿@model CHocVien
+@{
+	Layout="~/Views/Shared/_Layout.cshtml";
+}
+<h1>Thêm học viên</h1>
+<form method="post" asp-action="aAdd">
+	<div class="mb-3">
+		<div asp-validation-summary="ModelOnly" class="text-bg-danger"></div>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Mshv"></label>
+		<input class="form-control" asp-for="Mshv"/>
+		<span class="text-danger" asp-validation-for="Mshv"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Tenhv"></label>
+		<input class="form-control" asp-for="Tenhv"/>
+		<span class="text-danger" asp-validation-for="Tenhv"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Ngaysinh"></label>
+		<input type=date class="form-control" asp-for="Ngaysinh"/>
+		<span class="text-danger" asp-validation-for="Ngaysinh"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Phai"></label>
+		<select class=form-select asp-for="Phai">
+			<option value="True">Nam</option>
+			<option value="False">Nữ</option>
+		</select>
+		<span class="text-danger" asp-validation-for="Phai"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Malop"></label>
+		<select class="form-select" asp-for="Malop" asp-items="@ViewBag.DSLop">
+
+		</select>
+		<span class="text-danger" asp-validation-for="Malop"></span>
+	</div>
+	<div>
+		<button type="submit" class="btn btn-primary">Thêm</button>
+	</div>
+</form>

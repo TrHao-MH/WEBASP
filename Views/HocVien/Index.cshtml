@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Lylich>
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Danh sách học viên</h1>
+<a class="btn btn-primary" asp-action="Add" asp-controller="HocVien">Thêm</a>
+<table class="table">
+	<thead>
+		<th>STT</th>
+		<th>Mã học viên</th>
+		<th>Họ và tên</th>
+		<th>Ngày sinh</th>
+		<th>Phái</th>
+		<th>Mã lớp</th>
+		<th></th>
+	</thead>
+	@{int stt = 1; }
+	@foreach(Lylich item in Model){
+		<tr>
+			<td>@(stt++)</td>
+			<td>@item.Mshv</td>
+			<td>@item.Tenhv</td>
+			<td>@item.Ngaysinh.Value.ToShortDateString()</td>
+			<td>@(item.Phai.Value?"Nam":"Nữ")</td>
+			<td>@item.Malop</td>
+			<td>
+				<a class="btn btn-primary" asp-action="Delete" asp-controller="HocVien" asp-route-id="@item.Mshv">Xóa</a>
+				<a class="btn btn-primary" asp-action="Edit" asp-controller="HocVien" asp-route-id="@item.Mshv">Sửa</a>
+			</td>
+		</tr>
+	}
+</table>

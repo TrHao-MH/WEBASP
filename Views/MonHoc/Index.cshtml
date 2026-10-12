@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Monhoc>
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Danh sách môn học</h1>
+<a class="btn btn-primary" asp-action="Add" asp-controller="MonHoc">Thêm</a>
+<table class="table">
+	<thead>
+		<th>STT</th>
+		<th>Mã môn học</th>
+		<th>Tên</th>
+		<th>Số tiết</th>
+		<th></th>
+	</thead>
+	@{
+		int stt = 1;
+	}
+	@foreach (Monhoc item in Model)
+	{
+		<tr>
+			<td>@(stt++)</td>
+			<td>@item.Msmh</td>
+			<td>@item.Tenmh</td>
+			<td>@item.Sotiet</td>
+			<td>
+				<a class="btn btn-primary" asp-action="Delete" asp-controller="MonHoc" asp-route-id="@item.Msmh">Xóa</a>
+				<a class="btn btn-primary" asp-action="Edit" asp-controller="MonHoc" asp-route-id="@item.Msmh">Sửa</a>
+			</td>
+		</tr>
+	}
+</table>
