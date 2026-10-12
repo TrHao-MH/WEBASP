@@ -1,0 +1,28 @@
+﻿@model CMonHoc
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Thêm môn học</h1>
+<form method="post" asp-action="aAdd">
+	<div class="mb-3">
+		<div asp-validation-summary="ModelOnly" class="text-bg-danger"></div>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Msmh"></label>
+		<input class="form-control" asp-for="Msmh" />
+		<span class="text-danger" asp-validation-for="Msmh"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Tenmh"></label>
+		<input class="form-control" asp-for="Tenmh" />
+		<span class="text-danger" asp-validation-for="Tenmh"></span>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" asp-for="Sotiet"></label>
+		<input class="form-control" asp-for="Sotiet" />
+		<span class="text-danger" asp-validation-for="Sotiet"></span>
+	</div>
+	<div>
+		<button type="submit" class="btn btn-primary">Thêm</button>
+	</div>
+</form>

@@ -1,0 +1,42 @@
+﻿@model Lylich
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3 color="red">Xóa học viên</h3>
+<h3>Thông tin học viên</h3>
+<a class="btn btn-primary" asp-action="Index">Trở về</a>
+<dl class="row">
+	<dt class="col-2">Mã học viên: </dt>
+	<dd class="col-10">@Model.Mshv </dd>
+	<dt class="col-2">Tên học viên: </dt>
+	<dd class="col-10">@Model.Tenhv </dd>
+	<dt class="col-2">Ngày sinh: </dt>
+	<dd class="col-10">@(Model.Ngaysinh.Value.ToShortDateString()) </dd>
+	<dt class="col-2">Phái: </dt>
+	<dd class="col-10">@(Model.Phai.Value ? "Nam" : "Nữ") </dd>
+	<dt class="col-2">Mã lớp: </dt>
+	<dd class="col-10">@Model.Malop </dd>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Mã môn học</th>
+				<th>Tên môn học</th>
+				<th>Số tiết</th>
+				<th>Điểm</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(Diemthi d in Model.Diemthis)
+			{
+				<tr>
+					<td>@d.Msmh</td>
+					<td>@d.MsmhNavigation.Tenmh</td>
+					<td>@d.MsmhNavigation.Sotiet</td>
+					<td>@d.Diem</td>
+				</tr>
+			}
+			
+		</tbody>
+	</table>
+</dl>

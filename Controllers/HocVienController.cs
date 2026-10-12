@@ -11,7 +11,7 @@ namespace WEBASP.Controllers
         private qlhvContext db = new qlhvContext();
         public async Task<IActionResult> Index()
         {
-            List<Lylich> ds = await db.Lyliches.ToListAsync();
+            List<Lylich> ds = await db.Lyliches.Include(x => x.MalopNavigation).ToListAsync();
             return View(ds);
         }
         public async Task<IActionResult> Add()
@@ -89,6 +89,11 @@ namespace WEBASP.Controllers
                 catch (Exception e) {  }
             ModelState.AddModelError("", "Không xóa được học viên này");
             return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Detail(string id) {
+            Lylich HocVien = await db.Lyliches.Include(x=>x.MalopNavigation).FirstOrDefaultAsync(k=>k.Mshv==id);
+            HocVien.Diemthis= await db.Diemthis.Include(k => k.MsmhNavigation).Where(t=>t.Mshv==id).ToListAsync();
+            return View(HocVien);
         }
     }
 

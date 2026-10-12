@@ -7,15 +7,15 @@
 <a class="btn btn-primary" asp-action="Index">Trở về</a>
 <dl class="row">
 	<dt class="col-2">Mã học viên: </dt>
-	<dt class="col-20">@Model.Mshv </dt>
+	<dd class="col-10">@Model.Mshv </dd>
 	<dt class="col-2">Tên học viên: </dt>
-	<dt class="col-20">@Model.Tenhv </dt>
+	<dd class="col-10">@Model.Tenhv </dd>
 	<dt class="col-2">Ngày sinh: </dt>
-	<dt class="col-20">@(Model.Ngaysinh.Value.ToShortDateString()) </dt>
+	<dd class="col-10">@(Model.Ngaysinh.Value.ToShortDateString()) </dd>
 	<dt class="col-2">Phái: </dt>
-	<dt class="col-20">@(Model.Phai.Value?"Nam":"Nữ") </dt>
+	<dd class="col-10">@(Model.Phai.Value?"Nam":"Nữ") </dd>
 	<dt class="col-2">Mã lớp: </dt>
-	<dt class="col-20">@Model.Malop </dt>
+	<dd class="col-10">@Model.Malop </dd>
 	<form asp-action="aDelete" method="post" asp-route-id="@Model.Mshv">
 		<div class="mb-3">
 			<button type="submit" class="btn btn-danger">Xóa</button>
